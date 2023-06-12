@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Dropdown from 'mik-dropdown/dist/Dropdown';
 import AdressFieldset from '../components/form/AdressFieldset';
 import BaseInput from '../components/form/BaseInput';
@@ -7,11 +7,14 @@ import Header from '../components/Header';
 import Form from '../components/form/Form';
 import { departments } from '../datas/department';
 import {states} from '../datas/states'
+import { EmployeesContext } from '../components/SaveEmployees';
 import '../styles/App.css';
 
 
-function App() {
-  // const navigate = useNavigate();
+function App() { 
+  const navigate = useNavigate();
+  const employeesContext = useContext(EmployeesContext);
+  const {employeesList} = employeesContext;
   const [state, setState] = useState(states[0])
   const [department, setDepartment] = useState(departments[0])
   const initialValues = {
@@ -37,7 +40,11 @@ function App() {
   const submit = (form) => {
     form.state = state.value
     form.department = department.value
-    console.log(form)
+    employeesList.push(form)
+    localStorage.employeesList = JSON.stringify(employeesList)
+    if(employeesList.length){
+      navigate('/table')
+    }
   };
 
   return (

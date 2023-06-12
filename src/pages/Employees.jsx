@@ -1,19 +1,23 @@
 import { Link } from "react-router-dom";
-import { FormContext } from "../components/form/Form"
+import SaveEmployees, { EmployeesContext } from '../components/SaveEmployees';
 import { useContext } from "react";
 
 function Employees() {
-  const formContext = useContext(FormContext);
-  const { form } = formContext
-  console.log(form)
+  const employeesContext = useContext(EmployeesContext);
+  const { employeesList } = employeesContext
+
 
   return (
     <div className="container">
-      <h1>Current Employees</h1>
-      <div>
-        {form.firstName}
-      </div>
-      <Link to="/">Home</Link>
+      <SaveEmployees>
+        <h1>Current Employees</h1>
+        {employeesList.map(employee => 
+          <div key={employee.firstName}>
+            {employee.firstName}
+          </div>
+        )}
+        <Link to="/">Home</Link>
+        </SaveEmployees>
     </div>
   );
 }
