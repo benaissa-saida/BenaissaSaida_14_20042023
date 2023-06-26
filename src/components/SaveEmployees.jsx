@@ -1,26 +1,35 @@
-import {createContext, useEffect, useState } from 'react';
-
+import { createContext, useEffect, useState } from "react";
 
 export const EmployeesContext = createContext({
-    employeesList : []
+  employeesList: [],
 });
 
-function SaveEmployees({children}){
-    const [employeesList, setEmployeesList] = useState([])
+function SaveEmployees({ children }) {
+  const [employeesList, setEmployeesList] = useState([]);
 
-    
   useEffect(() => {
-    if (localStorage.employeesList && !employeesList.length) {
-        setEmployeesList(JSON.parse(localStorage.employeesList))
+    if (!localStorage.employeesList) {
+      return;
     }
-  }, [employeesList]);
+    const employeesInfos = JSON.parse(localStorage.employeesList);
 
-    return (
-        <EmployeesContext.Provider value={{employeesList}}>
-            {children}
-          </EmployeesContext.Provider>
-    )
+    if (employeesInfos) {
+      setEmployeesList(employeesInfos);
+    }
+  }, []);
 
+  const handleSaveEmployee = () => {
+    localStorage.employeesList = JSON.stringify(employeesList);
+  };
+
+  console.log("list in provider", employeesList);
+  return (
+    <EmployeesContext.Provider
+      value={{ employeesList, setEmployeesList: handleSaveEmployee }}
+    >
+      {children}
+    </EmployeesContext.Provider>
+  );
 }
 
 export default SaveEmployees;
