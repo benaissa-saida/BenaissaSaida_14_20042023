@@ -22,7 +22,6 @@ function SaveEmployees({ children }) {
     localStorage.employeesList = JSON.stringify(employeesList);
   };
 
-  console.log("list in provider", employeesList);
   return (
     <EmployeesContext.Provider
       value={{ employeesList, setEmployeesList: handleSaveEmployee }}
