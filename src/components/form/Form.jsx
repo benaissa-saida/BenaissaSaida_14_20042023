@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-// import { Modal } from "mik-modal";
 
 export const FormContext = createContext({
   form: {},
