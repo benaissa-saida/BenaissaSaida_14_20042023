@@ -2,12 +2,10 @@
 // import BaseInput from "./BaseInput"
 // import { states } from "../../datas/states"
 
-function AdressFieldset(props){
-    const {children} = props
+function AdressFieldset(props) {
+  const { children } = props;
 
-    return <fieldset className="adress">
-        {children}
-    </fieldset>
+  return <fieldset className="address">{children}</fieldset>;
 }
 
-export default AdressFieldset
+export default AdressFieldset;
