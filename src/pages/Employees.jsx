@@ -15,7 +15,7 @@ function Employees() {
     { name: "Street", field: "street" },
     { name: "City", field: "city" },
     { name: "State", field: "state" },
-    { name: "Zip Code", field: "zipCode" },
+    { name: "Zip Code", field: "zip" },
   ];
 
   return (
