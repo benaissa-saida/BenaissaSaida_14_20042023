@@ -11,7 +11,7 @@ function Employees() {
     { name: "Last Name", field: "lastName" },
     { name: "Start Date", field: "startDate" },
     { name: "Department", field: "department" },
-    { name: "Date of Birth", field: "dateOfBirth" },
+    { name: "Date of Birth", field: "dateBirth" },
     { name: "Street", field: "street" },
     { name: "City", field: "city" },
     { name: "State", field: "state" },
