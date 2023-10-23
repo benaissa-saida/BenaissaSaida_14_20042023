@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import Dropdown from "mik-dropdown/dist/Dropdown";
+import DatePicker from "mik-datepicker/dist/datePicker";
 import AdressFieldset from "../components/form/AdressFieldset";
 import BaseInput from "../components/form/BaseInput";
 import Header from "../components/Header";
@@ -19,6 +20,9 @@ function App() {
   const { setEmployeesList, employeesList } = employeesContext;
   const [state, setState] = useState(states[0]);
   const [department, setDepartment] = useState(departments[0]);
+  const [dateBirth, setDateBirth] = useState(null);
+  const [startDate, setStartDate] = useState(new Date());
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -42,6 +46,8 @@ function App() {
   const submit = (form) => {
     form.id = id;
     form.state = state.value;
+    form.dateBirth = dateBirth;
+    form.startDate = startDate;
     form.department = department.value;
     employeesList.push(form);
     if (employeesList.length) {
@@ -73,10 +79,24 @@ function App() {
         <Form submit={submit} initialValues={initialValues}>
           <BaseInput inputType="text" label="First Name" name="firstName" />
           <BaseInput inputType="text" label="Last Name" name="lastName" />
-          <div>DatePicker datebirth</div>
-          <div>DatePicker startdate</div>
+          <div>
+            <label htmlFor="datebirth">Date of Birth</label>
+            <DatePicker
+              selected={dateBirth}
+              onChange={(date) => setDateBirth(date)}
+              name="datebirth"
+            />
+          </div>
+          <div>
+            <label htmlFor="startdate">Start Date</label>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              name="startdate"
+            />
+          </div>
           <AdressFieldset>
-            <legend>Adress</legend>
+            <legend>Address</legend>
             <BaseInput inputType="text" label="Street" name="street" />
             <BaseInput inputType="text" label="City" name="city" />
             <Dropdown
