@@ -1,7 +1,3 @@
-// import Dropdown from "mik-dropdown/dist/Dropdown"
-// import BaseInput from "./BaseInput"
-// import { states } from "../../datas/states"
-
 function AdressFieldset(props) {
   const { children } = props;
 
