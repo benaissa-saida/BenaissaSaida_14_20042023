@@ -8,6 +8,11 @@ function Form(props) {
   const { children, submit = () => {}, initialValues } = props;
   const [form, setForm] = useState(initialValues);
 
+  const handleClick = (form) => {
+    submit(form);
+    setForm(initialValues);
+  };
+
   const handleFormChange = (event) => {
     // Get the name of the field that caused this change event
     // Get the new value of this field
@@ -33,7 +38,7 @@ function Form(props) {
         </FormContext.Provider>
       </form>
 
-      <button type="submit" onClick={() => submit(form)}>
+      <button type="submit" onClick={() => handleClick(form)}>
         Save
       </button>
     </div>

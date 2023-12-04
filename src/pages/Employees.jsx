@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { EmployeesContext } from "../components/SaveEmployees";
 import { useContext } from "react";
-import DataTable from "mik-datatable/dist/dataTable";
+import { DataTable } from "mik-datatable";
 
 function Employees() {
   const employeesContext = useContext(EmployeesContext);

@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import Dropdown from "mik-dropdown/dist/Dropdown";
-import DatePicker from "mik-datepicker/dist/datePicker";
+import { Dropdown } from "mik-dropdown";
+import { DatePicker } from "mik-datepicker";
 import AdressFieldset from "../components/form/AdressFieldset";
 import BaseInput from "../components/form/BaseInput";
 import Header from "../components/Header";
@@ -10,7 +10,7 @@ import Form from "../components/form/Form";
 import { departments } from "../datas/department";
 import { states } from "../datas/states";
 import { EmployeesContext } from "../components/SaveEmployees";
-import Modal from "mik-modal/dist/Modal";
+import { Modal } from "mik-modal";
 import "../styles/App.css";
 
 function App() {
@@ -68,7 +68,7 @@ function App() {
       </div>
       <div className="container">
         <Header>
-          <Link to="/table">View Current Employees</Link>
+          <Link to="/employees">View Current Employees</Link>
           <h2>Create Employee</h2>
         </Header>
         <Modal
